@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package event;
+package companies;
 
 /**
  *
  * @author Casper
  */
-public class OtherEvent { //ostali dogadjaji
+public class Company { //kompanija
     
 }

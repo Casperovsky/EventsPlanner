@@ -13,7 +13,7 @@ import person.Participant;
  *
  * @author Casper
  */
-public class Lecture extends Event{
+public class Lecture extends Event{ //predavanja
     private String subject;
     private Person lecturer;
     private String content;
