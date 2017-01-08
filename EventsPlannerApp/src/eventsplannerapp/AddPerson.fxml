@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="421.0" style="-fx-background-color: #ECF0F1;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eventsplannerapp.AddPersonController">
+    <stylesheets>
+        <URL value="@/css/style.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane prefHeight="87.0" prefWidth="421.0" style="-fx-background-color: #3498DB;">
+         <children>
+            <Label layoutX="14.0" layoutY="29.0" text="Add Person" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="29.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ComboBox fx:id="selectComboBox" layoutX="93.0" layoutY="105.0" onAction="#selectComboBoxAction" prefHeight="25.0" prefWidth="191.0" />
+      <Label layoutX="14.0" layoutY="105.0" prefHeight="25.0" prefWidth="64.0" text="Chose:" />
+      <Label fx:id="statusLabel" layoutX="333.0" layoutY="109.0" />
+      <AnchorPane fx:id="hostAnchor" layoutY="142.0" prefHeight="394.0" prefWidth="421.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="142.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Name:" />
+            <TextField fx:id="nameHostTextField" layoutX="94.0" layoutY="7.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="14.0" layoutY="45.0" text="Lastname:" />
+            <TextField fx:id="lastNameHostTextField" layoutX="94.0" layoutY="38.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="14.0" layoutY="74.0" text="Telephone:" />
+            <TextField fx:id="telHostTextField" layoutX="94.0" layoutY="70.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="14.0" layoutY="106.0" text="E-mail:" />
+            <TextField fx:id="emailHostTextField" layoutX="94.0" layoutY="102.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="14.0" layoutY="137.0" text="Note:" />
+            <TextArea fx:id="noteHostTextArea" layoutX="96.0" layoutY="134.0" prefHeight="107.0" prefWidth="311.0" />
+            <Button layoutX="244.0" layoutY="335.0" mnemonicParsing="false" onAction="#addHostButtonAction" prefHeight="30.0" prefWidth="73.0" text="Add" />
+            <Button layoutX="334.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="Cancel" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="participantsAnchor" layoutY="142.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="142.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Name:" />
+            <TextField fx:id="namePartTextField" layoutX="92.0" layoutY="11.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="14.0" layoutY="46.0" text="Lastname:" />
+            <TextField fx:id="lastNamePartTextField" layoutX="92.0" layoutY="43.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="14.0" layoutY="77.0" text="Organisation:" />
+            <TextField fx:id="orgPartTextField" layoutX="92.0" layoutY="74.0" prefHeight="25.0" prefWidth="191.0" />
+            <Button layoutX="247.0" layoutY="333.0" mnemonicParsing="false" onAction="#addParticipantButtonAction" prefHeight="30.0" prefWidth="73.0" text="Add" />
+            <Button layoutX="328.0" layoutY="333.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="Cancel" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

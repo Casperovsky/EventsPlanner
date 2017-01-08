@@ -10,5 +10,15 @@ package products;
  * @author Casper
  */
 public class Product { //proizvod
+    String name;
+    
+    public Product(String name){
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "name=" + name + '}';
+    }
     
 }

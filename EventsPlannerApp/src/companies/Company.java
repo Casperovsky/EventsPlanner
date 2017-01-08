@@ -10,5 +10,16 @@ package companies;
  * @author Casper
  */
 public class Company { //kompanija
+    String name;
     
+    public Company(String name){
+        this.name = name;
+    }
+    @Override
+    public String toString() {
+        return "Company{" + "name=" + name + '}';
+    }
+        
 }
+
+    

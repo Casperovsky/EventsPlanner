@@ -22,7 +22,11 @@ public class Host extends Person{
         this.email = email;
         this.notes = notes;
     }
-
+    public Host(String name, String lastName, String telNumber, String email){
+        super(name,lastName);
+        this.telNumber = telNumber;
+        this.email = email;
+    }
     public String getTelNumber() {
         return telNumber;
     }
@@ -46,6 +50,13 @@ public class Host extends Person{
     public void setNotes(ArrayList<Notes> notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return super.getName() +" " + super.getLastName();
+    }
+
+    
     
 
     

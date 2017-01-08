@@ -5,8 +5,8 @@
  */
 package event;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import person.Host;
 import person.Participant;
 
@@ -16,21 +16,19 @@ import person.Participant;
  */
 public class Event { //dogadjaj
     private String name;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String description;
     private Host host;
-    private ArrayList<Participant> participants;
     private ArrayList<Event> listOfSubEvents; //lista dogadjaja koji pripadaju ovome dogadjaju
-    private Event mainEvent; //glavni dogadjaj kome pripada, ako je ovo glavni onda je null
 
-    public Event(String name, Date startDate, Date endDate, String description, Host host, ArrayList<Participant> participants) {
+    public Event(String name, LocalDate startDate, LocalDate endDate, String description, Host host) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.description = description;
         this.host = host;
-        this.participants = participants;
+        listOfSubEvents = new ArrayList<>();
     }
 
     public String getName() {
@@ -41,19 +39,19 @@ public class Event { //dogadjaj
         this.name = name;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -73,12 +71,23 @@ public class Event { //dogadjaj
         this.host = host;
     }
 
-    public ArrayList<Participant> getParticipants() {
-        return participants;
+    public ArrayList<Event> getListOfSubEvents() {
+        return listOfSubEvents;
     }
 
-    public void setParticipants(ArrayList<Participant> participants) {
-        this.participants = participants;
+    public void setListOfSubEvents(ArrayList<Event> listOfSubEvents) {
+        this.listOfSubEvents = listOfSubEvents;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    public String toCSV(){
+        return "Event;"+this.getName()+";"+this.getStartDate()+";"+this.getEndDate()+";"+this.getDescription()+
+                ";"+this.getHost()+";"+this.getListOfSubEvents();
+    }
+
+
     
 }

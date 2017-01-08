@@ -9,10 +9,12 @@ package person;
  *
  * @author Casper
  */
-public class Author extends Person{
+public class Author extends Participant{
     
-    public Author(String name, String lastName) {
-        super(name, lastName);
+    public Author(String name, String lastName,String orgName) {
+        super(name, lastName, orgName);
     }
+    
+   
     
 }

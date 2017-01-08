@@ -23,11 +23,12 @@
             </AnchorPane>
             <Button id="menuButton" fx:id="menuButton" layoutY="90.0" mnemonicParsing="false" onAction="#allEventsButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="All Events" />
             <Button id="menuButton" layoutY="135.0" mnemonicParsing="false" onAction="#usersButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Users" />
-            <Button id="menuButton" layoutY="180.0" mnemonicParsing="false" onAction="#optionsButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Options" />
+            <Button id="menuButton" layoutY="180.0" mnemonicParsing="false" onAction="#visitorsButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Visitors" />
+            <Button id="menuButton" layoutY="225.0" mnemonicParsing="false" onAction="#optionsButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Downloads" />
             <Button id="exitButton" fx:id="exitButton" layoutY="554.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Exit" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="eventsAnchorPane" layoutX="349.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="eventsAnchorPane" layoutX="349.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="90.0" prefWidth="814.0" style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -36,8 +37,9 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button id="actionButton" fx:id="addEventButton" layoutX="442.0" layoutY="11.0" mnemonicParsing="false" onAction="#addEventButtonAction" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="Add" />
-                  <Button id="actionButton" layoutX="530.0" layoutY="11.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="Delete" />
+                  <Button id="actionButton" layoutX="442.0" layoutY="11.0" mnemonicParsing="false" onAction="#addEventButtonAction" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="Add" AnchorPane.leftAnchor="442.0" AnchorPane.topAnchor="11.0" />
+                  <Button id="actionButton" layoutX="538.0" layoutY="11.0" mnemonicParsing="false" onAction="#deleteEventButtonAction" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="Delete" AnchorPane.leftAnchor="538.0" AnchorPane.topAnchor="11.0" />
+                  <Button id="actionButton" layoutX="628.0" layoutY="11.0" mnemonicParsing="false" onAction="#viewEventButtonAction" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="View event" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contentAnchorPane" layoutY="74.0" prefHeight="526.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
@@ -56,23 +58,75 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <Button id="actionButton" layoutX="441.0" layoutY="13.0" mnemonicParsing="false" onAction="#addUserAction" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="Add" AnchorPane.leftAnchor="442.0" AnchorPane.topAnchor="11.0" />
+                  <Button id="actionButton" layoutX="536.0" layoutY="16.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="76.0" stylesheets="@../css/style.css" text="Delete" AnchorPane.leftAnchor="539.0" AnchorPane.topAnchor="11.0" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                      <Tab text="Organizators">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="hostTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Participants">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="participantTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="optionsAnchorPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="downloadsAnchorPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="14.0" layoutY="30.0" text="Options" textFill="WHITE" AnchorPane.leftAnchor="20.0">
+                  <Label layoutX="14.0" layoutY="30.0" text="Downloads" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <Button layoutX="48.0" layoutY="57.0" mnemonicParsing="false" onAction="#downloadEventsButtonAction" prefHeight="90.0" prefWidth="92.0" text="Button" />
+                  <Label layoutX="48.0" layoutY="154.0" text="Download events" textAlignment="CENTER" />
+                  <Label layoutX="166.0" layoutY="154.0" text="Download hosts" textAlignment="CENTER" />
+                  <Button layoutX="163.0" layoutY="57.0" mnemonicParsing="false" onAction="#downloadHostsButtonAction" prefHeight="90.0" prefWidth="92.0" text="Button" />
+                  <Label layoutX="279.0" layoutY="149.0" prefHeight="45.0" prefWidth="92.0" text="Download participants" textAlignment="CENTER" wrapText="true" />
+                  <Button layoutX="279.0" layoutY="57.0" mnemonicParsing="false" onAction="#downloadParticipantsButtonAction" prefHeight="90.0" prefWidth="92.0" text="Button" />
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="visitorsAnchorPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label text="Visitors" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TableView fx:id="visitorsTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

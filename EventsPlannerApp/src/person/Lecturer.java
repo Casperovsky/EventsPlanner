@@ -9,12 +9,11 @@ package person;
  *
  * @author Casper
  */
-public class Performer extends Participant{
+public class Lecturer extends Participant {
     
-    public Performer(String name, String lastName,String orgName) {
+    public Lecturer(String name, String lastName,String orgName) {
         super(name, lastName, orgName);
     }
     
-
     
 }

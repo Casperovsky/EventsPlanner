@@ -10,23 +10,23 @@ package person;
  * @author Casper
  */
 public class Visitor extends Person{
-    private String adress;
+    private String address;
     private String telNumber;
     private String email;
 
-    public Visitor(String adress, String telNumber, String email, String name, String lastName) {
+    public Visitor(String name, String lastName, String address,String telNumber, String email){
         super(name, lastName);
-        this.adress = adress;
+        this.address = address;
         this.telNumber = telNumber;
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTelNumber() {
@@ -44,5 +44,6 @@ public class Visitor extends Person{
     public void setEmail(String email) {
         this.email = email;
     }
+
     
 }

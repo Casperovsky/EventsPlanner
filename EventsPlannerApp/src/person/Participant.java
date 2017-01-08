@@ -12,7 +12,7 @@ package person;
 public class Participant extends Person{
     private String orgName;
 
-    public Participant(String orgName, String name, String lastName) {
+    public Participant(String name, String lastName, String orgName) {
         super(name, lastName);
         this.orgName = orgName;
     }

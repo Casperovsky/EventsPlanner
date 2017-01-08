@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package event;
-import java.util.ArrayList;
-import java.util.Date;
-import person.Person;
+import java.time.LocalDate;
 import person.Host;
+import person.Lecturer;
 import person.Participant;
 /**
  *
@@ -15,11 +14,11 @@ import person.Participant;
  */
 public class Lecture extends Event{ //predavanja
     private String subject;
-    private Person lecturer;
+    private Lecturer lecturer;
     private String content;
 
-    public Lecture(String subject, Person lecturer, String content, String name, Date startDate, Date endDate, String description, Host host, ArrayList<Participant> participants) {
-        super(name, startDate, endDate, description, host, participants);
+    public Lecture(String subject, Lecturer lecturer, String content, String name, LocalDate startDate, LocalDate endDate, String description, Host host) {
+        super(name, startDate, endDate, description, host);
         this.subject = subject;
         this.lecturer = lecturer;
         this.content = content;
@@ -33,11 +32,11 @@ public class Lecture extends Event{ //predavanja
         this.subject = subject;
     }
 
-    public Person getLecturer() {
+    public Lecturer getLecturer() {
         return lecturer;
     }
 
-    public void setLecturer(Person lecturer) {
+    public void setLecturer(Lecturer lecturer) {
         this.lecturer = lecturer;
     }
 
@@ -48,6 +47,9 @@ public class Lecture extends Event{ //predavanja
     public void setContent(String content) {
         this.content = content;
     }
-
+    public String toCSV(){
+        return "Lecture;"+super.getName()+";"+super.getStartDate()+";"+super.getEndDate()+";"+super.getDescription()+
+                ";"+super.getHost()+";"+super.getListOfSubEvents()+";"+this.getSubject()+";"+this.getLecturer()+";"+this.getContent();
+    }
     
 }
