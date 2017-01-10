@@ -31,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import person.Author;
 import person.Host;
 import person.Lecturer;
@@ -125,6 +126,12 @@ public class AddEventController implements Initializable {
     private TextArea lectureContentTextArea;
     @FXML
     private Button lectureAddButton;
+
+    @FXML
+    private void cancelButtonAction(ActionEvent event){
+        Stage stage = (Stage) selectComboBox.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     private void lectureAddButtonAction(ActionEvent event) {
         Lecture lect = new Lecture(lectureSubjectTextField.getText(), (Lecturer) lectureComboBox.getValue(), 
@@ -134,6 +141,7 @@ public class AddEventController implements Initializable {
         if(mainEventComboBox.getValue() != null){
             mainEventComboBox.getValue().getListOfSubEvents().add(lect);
         }
+        succAdded("Added new event - " + lect.getName() + "!");
     }
     //Concert
     @FXML
@@ -163,7 +171,7 @@ public class AddEventController implements Initializable {
        if(mainEventComboBox.getValue() != null){
         mainEventComboBox.getValue().getListOfSubEvents().add(con);
        }
-
+       succAdded("Added new event - " + con.getName() + "!");
         
     }
     //Exhibition
@@ -194,7 +202,7 @@ public class AddEventController implements Initializable {
         if(mainEventComboBox.getValue() != null){
             mainEventComboBox.getValue().getListOfSubEvents().add(ex);
         }
-
+        succAdded("Added new event - " + ex.getName() + "!");
     }
     //Promotion
     @FXML
@@ -215,6 +223,7 @@ public class AddEventController implements Initializable {
             if(mainEventComboBox.getValue() != null){
                 mainEventComboBox.getValue().getListOfSubEvents().add(prom);
             }
+            succAdded("Added new event - " + prom.getName() + "!");
         }
         else if(productToggleButton.isSelected()){
             Promotion prom = new Promotion(new Product(promotionTextField.getText()), 
@@ -224,6 +233,7 @@ public class AddEventController implements Initializable {
             if(mainEventComboBox.getValue() != null){
                 mainEventComboBox.getValue().getListOfSubEvents().add(prom);
             }
+            succAdded("Added new event - " + prom.getName() + "!");
         }
         else{
             errorPromotionLabel.setText("Choose company or product!");
@@ -238,15 +248,20 @@ public class AddEventController implements Initializable {
         if(mainEventComboBox.getValue() != null){
                 mainEventComboBox.getValue().getListOfSubEvents().add(other);
             }
+        succAdded("Added new event - " + other.getName() + "!");
     }
+    @FXML
+    private ToggleGroup companyToggleGroup;
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         eventDetailsAnchorPane.setVisible(false);
         selectComboBox.getItems().addAll("Concert","Exhibition","Lecture","Promotion","Other Event");
+        mainEventComboBox.getItems().add(null);
         mainEventComboBox.getItems().addAll(MainPageController.allEvents);
         promotionAnchorPane.setVisible(false);
         lectureAnchorPane.setVisible(false);
@@ -255,13 +270,7 @@ public class AddEventController implements Initializable {
         eventOrgComboBox.getItems().addAll(MainPageController.allHosts);
         populateLecturers();
         populatePerformers();
-        populateAuthors();
-        //
-        
-    ToggleGroup group = new ToggleGroup();
-        companyToggleButton.setToggleGroup(group);
-        productToggleButton.setToggleGroup(group);
-        
+        populateAuthors();    
     }    
     public void populateLecturers(){
         for(Participant p : MainPageController.allParticipants){
@@ -287,5 +296,10 @@ public class AddEventController implements Initializable {
         }
         exhibitionAuthorsComboBox.getItems().addAll(allAuthors);
     }
+    public void succAdded(String mssg){
+        cancelButtonAction(null);
+        RootController.infoPopUp(mssg);
+    }
+
     
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Alert;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import person.Host;
@@ -121,7 +122,13 @@ public class RootController {
         }   
         
     }
-
+    public static void infoPopUp(String mssg){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText(mssg);
+            alert.showAndWait();
+    }
     
     
 }
