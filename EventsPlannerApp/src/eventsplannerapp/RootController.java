@@ -5,9 +5,20 @@
  */
 package eventsplannerapp;
 
+import event.Event;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import person.Host;
+import person.Participant;
 
 /**
  *
@@ -42,7 +53,74 @@ public class RootController {
     public void setOwnerStage(Stage ownerStage) {
         this.ownerStage = ownerStage;
     }
-
+    
+    public void serialisationAllEvents(){
+        ArrayList<Event> events = new ArrayList<>();
+        for(Event e : MainPageController.allEvents){
+            events.add(e);
+        }
+        try{
+            File file = new File("src/save/allEvents.dat");
+            file.createNewFile();
+            FileOutputStream fos = new FileOutputStream("src/save/allEvents.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(events);
+            oos.close();
+            fos.close();
+        } catch(Exception e){
+            System.out.println("[Error] serialisation allEvents: " + e);
+        }
+    }
+    public void serialisationAllHosts(){
+        ArrayList<Host> hosts = new ArrayList<>();
+        for(Host h : MainPageController.allHosts){
+            hosts.add(h);
+        }
+        try{
+            File file = new File("src/save/allHosts.dat");
+            file.createNewFile();
+            FileOutputStream fos = new FileOutputStream("src/save/allHosts.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(hosts);
+            oos.close();
+            fos.close();
+        } catch(Exception e){
+            System.out.println("[Error] serialisation allHosts: " + e);
+        }
+    }
+    public void serialisationAllParticipants(){
+        ArrayList<Participant> participants = new ArrayList<>();
+        for(Participant p : MainPageController.allParticipants){
+            participants.add(p);
+        }
+        try{
+            File file = new File("src/save/allParticipants.dat");
+            file.createNewFile();
+            FileOutputStream fos = new FileOutputStream("src/save/allParticipants.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(participants);
+            oos.close();
+            fos.close();
+        } catch(Exception e){
+            System.out.println("[Error] serialisation allParticipants: " + e);
+        }
+    }
+    public void startUp(){
+        try{
+            FileInputStream fis = new FileInputStream("src/save/allEvents.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            MainPageController.allEvents.addAll((ArrayList<Event>) ois.readObject());
+            fis = new FileInputStream("src/save/allHosts.dat");
+            ois = new ObjectInputStream(fis);
+            MainPageController.allHosts.addAll((ArrayList<Host>) ois.readObject());
+            fis = new FileInputStream("src/save/allParticipants.dat");
+            ois = new ObjectInputStream(fis);
+            MainPageController.allParticipants.addAll((ArrayList<Participant>) ois.readObject());
+        } catch(Exception e){
+            System.out.println("[uvoz] " + e);
+        }   
+        
+    }
 
     
     

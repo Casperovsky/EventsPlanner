@@ -5,11 +5,13 @@
  */
 package person;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Casper
  */
-public class Person {
+public class Person implements Serializable{
     private String name;
     private String lastName;
 

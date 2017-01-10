@@ -192,6 +192,14 @@ public class MainPageController implements Initializable {
             System.out.println("errorrr");
         }
     }
+    @FXML
+    private void saveAllButonAction(ActionEvent event){
+        RootController rc = new RootController();
+        rc.serialisationAllEvents();
+        rc.serialisationAllHosts();
+        rc.serialisationAllParticipants();
+        System.out.println("success!");
+    }
     
     @FXML
     private TableView hostTableView;
@@ -217,9 +225,10 @@ public class MainPageController implements Initializable {
         usersAnchorPane.setVisible(false);
         downloadsAnchorPane.setVisible(false);
         visitorsAnchorPane.setVisible(false);
-        
-        allHosts.add(new Host("Milos", "Stanisljevic", "065/815-822", "milos.stanisljevic@gmail.com"));
-        allHosts.add(new Host("Milos", "Stanisljevic", "065/815-822", "milos.stanisljevic@gmail.com"));
+        RootController rc = new RootController();
+        rc.startUp();
+//        allHosts.add(new Host("Milos", "Stanisljevic", "065/815-822", "milos.stanisljevic@gmail.com"));
+//        allHosts.add(new Host("Milos", "Stanisljevic", "065/815-822", "milos.stanisljevic@gmail.com"));
         /////////////////// Host (Organizators) TableView ///////////////////
         hostTableView.setEditable(true);
         hostTableView.setPlaceholder(new Label(""));
@@ -253,7 +262,7 @@ public class MainPageController implements Initializable {
         participantTableView.setPlaceholder(new Label(""));
         TableColumn partNameCol = new TableColumn("Name");
         TableColumn partLastNameCol = new TableColumn("Lastname");
-        TableColumn partOrganizationCol = new TableColumn("Telephone");
+        TableColumn partOrganizationCol = new TableColumn("Organisation");
         partNameCol.setCellValueFactory(
                     new PropertyValueFactory<>("name")
             );

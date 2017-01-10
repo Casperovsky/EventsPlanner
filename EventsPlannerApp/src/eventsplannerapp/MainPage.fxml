@@ -26,6 +26,7 @@
             <Button id="menuButton" layoutY="180.0" mnemonicParsing="false" onAction="#visitorsButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Visitors" />
             <Button id="menuButton" layoutY="225.0" mnemonicParsing="false" onAction="#optionsButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Downloads" />
             <Button id="exitButton" fx:id="exitButton" layoutY="554.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Exit" />
+            <Button id="menuButton" layoutY="270.0" mnemonicParsing="false" onAction="#saveAllButonAction" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/style.css" text="Save all" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="eventsAnchorPane" layoutX="349.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

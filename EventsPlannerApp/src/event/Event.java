@@ -5,6 +5,7 @@
  */
 package event;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import person.Host;
@@ -14,7 +15,7 @@ import person.Participant;
  *
  * @author Casper
  */
-public class Event { //dogadjaj
+public class Event implements Serializable{ //dogadjaj
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;

@@ -5,13 +5,14 @@
  */
 package utility;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Casper
  */
-public class Notes {
+public class Notes implements Serializable{
     private Date date;
     private String content;
     
@@ -19,5 +20,11 @@ public class Notes {
         this.date = date;
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "(" + date + ") " + content;
+    }
+    
     
 }

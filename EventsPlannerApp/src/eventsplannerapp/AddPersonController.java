@@ -19,6 +19,7 @@ import person.Author;
 import person.Host;
 import person.Lecturer;
 import person.Performer;
+import utility.Notes;
 
 /**
  * FXML Controller class
@@ -61,7 +62,7 @@ public class AddPersonController implements Initializable {
     @FXML
     private void addHostButtonAction(ActionEvent event){
         MainPageController.allHosts.add(new Host(nameHostTextField.getText(),
-                lastNameHostTextField.getText(),telHostTextField.getText(),emailHostTextField.getText()));
+                lastNameHostTextField.getText(),telHostTextField.getText(),emailHostTextField.getText(),new Notes(new java.util.Date(), noteHostTextArea.getText())));
         selectComboBox.getSelectionModel().clearSelection();
         nameHostTextField.clear();
         lastNameHostTextField.clear();
