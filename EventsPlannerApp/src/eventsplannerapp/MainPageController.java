@@ -227,8 +227,6 @@ public class MainPageController implements Initializable {
         visitorsAnchorPane.setVisible(false);
         RootController rc = new RootController();
         rc.startUp();
-//        allHosts.add(new Host("Milos", "Stanisljevic", "065/815-822", "milos.stanisljevic@gmail.com"));
-//        allHosts.add(new Host("Milos", "Stanisljevic", "065/815-822", "milos.stanisljevic@gmail.com"));
         /////////////////// Host (Organizators) TableView ///////////////////
         hostTableView.setEditable(true);
         hostTableView.setPlaceholder(new Label(""));
