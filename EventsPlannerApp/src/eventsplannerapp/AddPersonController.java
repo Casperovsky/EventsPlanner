@@ -61,8 +61,10 @@ public class AddPersonController implements Initializable {
     private TextArea noteHostTextArea;
     @FXML
     private void addHostButtonAction(ActionEvent event){
-        MainPageController.allHosts.add(new Host(nameHostTextField.getText(),
-                lastNameHostTextField.getText(),telHostTextField.getText(),emailHostTextField.getText(),new Notes(new java.util.Date(), noteHostTextArea.getText())));
+        Host h = new Host(nameHostTextField.getText(),
+                lastNameHostTextField.getText(),telHostTextField.getText(),emailHostTextField.getText(),new Notes(new java.util.Date(), noteHostTextArea.getText()));
+        MainPageController.allHosts.add(h);
+        WriteThread wt = new WriteThread("HOST", h);
         selectComboBox.getSelectionModel().clearSelection();
         nameHostTextField.clear();
         lastNameHostTextField.clear();

@@ -120,7 +120,6 @@ public class RootController {
         } catch(Exception e){
             System.out.println("[uvoz] " + e);
         }   
-        
     }
     public static void infoPopUp(String mssg){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

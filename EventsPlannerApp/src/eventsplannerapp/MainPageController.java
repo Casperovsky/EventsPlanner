@@ -220,13 +220,14 @@ public class MainPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        WriteThread wt = new WriteThread("START",null);
         // TODO
         eventsAnchorPane.setVisible(true);
         usersAnchorPane.setVisible(false);
         downloadsAnchorPane.setVisible(false);
         visitorsAnchorPane.setVisible(false);
-        RootController rc = new RootController();
-        rc.startUp();
+//        RootController rc = new RootController();
+//        rc.startUp();
         /////////////////// Host (Organizators) TableView ///////////////////
         hostTableView.setEditable(true);
         hostTableView.setPlaceholder(new Label(""));
@@ -411,5 +412,7 @@ public class MainPageController implements Initializable {
             
         }
     }
+    
+    
     
 }
