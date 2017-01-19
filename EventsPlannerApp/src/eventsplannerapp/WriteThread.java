@@ -6,6 +6,8 @@
 package eventsplannerapp;
 
 import event.Event;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -34,14 +36,16 @@ public class WriteThread extends Thread{
             out.writeObject(command);
             out.writeObject(obj);
             out.flush();
+            
             if(command.equals("START")){
                 MainPageController.allHosts.addAll((ArrayList<Host>) in.readObject());
                 MainPageController.allParticipants.addAll((ArrayList<Participant>) in.readObject());
                 MainPageController.allEvents.addAll((ArrayList<Event>) in.readObject());
             }
             
-            in.close();
+            
             out.close();
+            in.close();
             conn.close();
         } catch(Exception ex){
             ex.printStackTrace();

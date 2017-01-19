@@ -38,7 +38,7 @@
             <Label layoutX="14.0" layoutY="137.0" text="Note:" />
             <TextArea fx:id="noteHostTextArea" layoutX="96.0" layoutY="134.0" prefHeight="107.0" prefWidth="311.0" />
             <Button layoutX="244.0" layoutY="335.0" mnemonicParsing="false" onAction="#addHostButtonAction" prefHeight="30.0" prefWidth="73.0" text="Add" />
-            <Button layoutX="334.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="Cancel" />
+            <Button layoutX="334.0" layoutY="335.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="30.0" prefWidth="73.0" text="Cancel" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="participantsAnchor" layoutY="142.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="142.0">
@@ -50,7 +50,7 @@
             <Label layoutX="14.0" layoutY="77.0" text="Organisation:" />
             <TextField fx:id="orgPartTextField" layoutX="92.0" layoutY="74.0" prefHeight="25.0" prefWidth="191.0" />
             <Button layoutX="247.0" layoutY="333.0" mnemonicParsing="false" onAction="#addParticipantButtonAction" prefHeight="30.0" prefWidth="73.0" text="Add" />
-            <Button layoutX="328.0" layoutY="333.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="Cancel" />
+            <Button layoutX="328.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="30.0" prefWidth="73.0" text="Cancel" />
          </children>
       </AnchorPane>
    </children>

@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import person.Author;
 import person.Host;
 import person.Lecturer;
@@ -48,6 +49,11 @@ public class AddPersonController implements Initializable {
     private AnchorPane participantsAnchor;
     @FXML
     private Label statusLabel;
+    @FXML
+    private void cancelButtonAction(ActionEvent event){
+        Stage stage = (Stage) selectComboBox.getScene().getWindow();
+        stage.close();
+    }
     ////// Hosts ////////
     @FXML
     private TextField nameHostTextField;
@@ -64,7 +70,7 @@ public class AddPersonController implements Initializable {
         Host h = new Host(nameHostTextField.getText(),
                 lastNameHostTextField.getText(),telHostTextField.getText(),emailHostTextField.getText(),new Notes(new java.util.Date(), noteHostTextArea.getText()));
         MainPageController.allHosts.add(h);
-        WriteThread wt = new WriteThread("HOST", h);
+        WriteThread wt = new WriteThread("ADDHOST", h);
         selectComboBox.getSelectionModel().clearSelection();
         nameHostTextField.clear();
         lastNameHostTextField.clear();
@@ -84,16 +90,19 @@ public class AddPersonController implements Initializable {
     @FXML
     private void addParticipantButtonAction(ActionEvent event) {
         if(selectComboBox.getValue() == "Author"){
-            MainPageController.allParticipants.add(
-                    new Author(namePartTextField.getText(),lastNamePartTextField.getText(),orgPartTextField.getText()));
+            Author a = new Author(namePartTextField.getText(),lastNamePartTextField.getText(),orgPartTextField.getText());
+            MainPageController.allParticipants.add(a);
+            WriteThread wt = new WriteThread("ADDPARTICIPANT", a);
         }
         else if(selectComboBox.getValue() == "Lecturer"){
-            MainPageController.allParticipants.add(
-                    new Lecturer(namePartTextField.getText(),lastNamePartTextField.getText(),orgPartTextField.getText()));
+            Lecturer l = new Lecturer(namePartTextField.getText(),lastNamePartTextField.getText(),orgPartTextField.getText());
+            MainPageController.allParticipants.add(l);
+            WriteThread wt = new WriteThread("ADDPARTICIPANT", l);
         }
         else if(selectComboBox.getValue() == "Performer"){
-            MainPageController.allParticipants.add(
-                    new Performer(namePartTextField.getText(),lastNamePartTextField.getText(),orgPartTextField.getText()));
+            Performer p = new Performer(namePartTextField.getText(),lastNamePartTextField.getText(),orgPartTextField.getText());
+            MainPageController.allParticipants.add(p);
+            WriteThread wt = new WriteThread("ADDPARTICIPANT", p);
         }
         selectComboBox.getSelectionModel().clearSelection();
         namePartTextField.clear();
